@@ -36,6 +36,11 @@ spec:
                 configMapKeyRef:
                   key: api.config.compression
                   name: basta-2020-config-2
+            - name: CONNECTIONSTRINGS__DB
+              valueFrom:
+                secretKeyRef:
+                  key: ConnectionString
+                  name: dev-db-connection-string
           # 3 alle Werte einer ConfigMap laden
           envFrom:
             - configMapRef:
