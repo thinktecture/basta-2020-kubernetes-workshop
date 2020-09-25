@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: basta-2020-config-2
+  namespace: basta-2020-deployments
+  labels:
+    environment: development
+data:
+  api.config: |-
+    compression: gzip
+    loglevel: info
+    listlimt: 100

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: basta-2020-config-1
+  namespace: basta-2020-deployments
+  labels:
+    environment: development
+data:
+  JsonDepth: "5"
+  ListLimit: "10"
