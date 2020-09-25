@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-production
+  name: letsencrypt-staging
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: thorsten.hans@gmail.com
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
@@ -14,3 +14,16 @@ spec:
       - http01:
           ingress:
             class: nginx
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: 51.105.144.90
+  namespace: basta-2020-deployments
+spec:
+  secretName: example-com-tls
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: 51.105.144.90
+  dnsNames:
+    - 51.105.144.90

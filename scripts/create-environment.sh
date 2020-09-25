@@ -20,4 +20,4 @@ ACR_ID=$(az acr show -n basta2020k8s$ACR_SUFFIX -g $RG_NAME --query "id" -o tsv)
 az aks create -n basta-2020-k8s -g $RG_NAME --attach-acr $ACR_ID --node-count 2 --enable-managed-identity -l $AZ_REGION
 
 # Create AKS without ACR
-az aks create -n basta-2020-k8s -g $RG_NAME --node-count 2 --enable-managed-identity -l $AZ_REGION
+# az aks create -n basta-2020-k8s -g $RG_NAME --node-count 2 --enable-managed-identity -l $AZ_REGION

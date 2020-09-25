@@ -3,17 +3,17 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
   name: webapi-ingress-rules
   namespace: basta-2020-deployments
 spec:
   tls:
-    - hosts: []
-      secretName: letsencrypt-tls
+    - hosts:
+        - 51.105.144.90
+      secretName: letsencrypt-staging-tls
   rules:
     - http:
         paths:
           - backend:
               serviceName: webapi
               servicePort: 8080
-            path: /
