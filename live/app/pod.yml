@@ -3,6 +3,11 @@ kind: Pod
 metadata:
   name: webapi
   namespace: basta-2020
+  labels:
+    app: webapi
+    city: Mainz
+    environment: development
+    kind: backend
 spec:
   containers:
     - name: api
