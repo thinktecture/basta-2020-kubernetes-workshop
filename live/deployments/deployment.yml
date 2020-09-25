@@ -26,4 +26,6 @@ spec:
       containers:
         - image: thorstenhans/kubernetes-workshop:0.0.2
           name: api
+          ports:
+            - containerPort: 80
           resources: {}
