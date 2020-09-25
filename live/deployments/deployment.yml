@@ -24,7 +24,7 @@ spec:
         kind: backend
     spec:
       containers:
-        - image: thorstenhans/kubernetes-workshop:0.0.2
+        - image: thorstenhans/kubernetes-workshop:0.0.4
           name: api
           env:
             # 1. manuelle Wertevergabe
@@ -45,6 +45,20 @@ spec:
           envFrom:
             - configMapRef:
                 name: basta-2020-config-1
+          readinessProbe:
+            initialDelaySeconds: 2
+            httpGet:
+              path: "readiness"
+              port: 80
+              scheme: HTTP
+          livenessProbe:
+            periodSeconds: 20
+            timeoutSeconds: 2
+            initialDelaySeconds: 15
+            httpGet:
+              path: "liveness"
+              port: 80
+              scheme: HTTP
           ports:
             - containerPort: 80
           resources:

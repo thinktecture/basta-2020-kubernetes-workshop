@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+  name: webapi-ingress-rules
+  namespace: basta-2020-deployments
+spec:
+  tls:
+    - hosts: []
+      secretName: letsencrypt-tls
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: webapi
+              servicePort: 8080
+            path: /

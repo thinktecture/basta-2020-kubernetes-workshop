@@ -25,6 +25,7 @@ namespace Thinktecture.AKS.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHealthChecks();
             services.AddControllers();
         }
 
@@ -35,16 +36,13 @@ namespace Thinktecture.AKS.Sample
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("liveness");
+                endpoints.MapHealthChecks("readiness");
             });
         }
     }
