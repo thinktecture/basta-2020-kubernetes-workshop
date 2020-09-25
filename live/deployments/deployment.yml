@@ -26,6 +26,20 @@ spec:
       containers:
         - image: thorstenhans/kubernetes-workshop:0.0.2
           name: api
+          env:
+            # 1. manuelle Wertevergabe
+            - name: BASTA_DAY
+              value: Friday
+            # 2. 1. Wert aus ConfigMap laden
+            - name: API_COMPRESSION_ALGORITHM
+              valueFrom:
+                configMapKeyRef:
+                  key: api.config.compression
+                  name: basta-2020-config-2
+          # 3 alle Werte einer ConfigMap laden
+          envFrom:
+            - configMapRef:
+                name: basta-2020-config-1
           ports:
             - containerPort: 80
           resources: {}

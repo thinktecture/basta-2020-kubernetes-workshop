@@ -6,7 +6,6 @@ metadata:
   labels:
     environment: development
 data:
-  api.config: |-
-    compression: gzip
-    loglevel: info
-    listlimt: 100
+  api.config.compression: gzip
+  api.config.loglevel: info
+  api.config.listlimt: "100"

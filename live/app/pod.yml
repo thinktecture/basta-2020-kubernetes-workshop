@@ -11,6 +11,7 @@ metadata:
 spec:
   containers:
     - name: api
-      image: thorstenhans/kubernetes-workshop:0.0.2
+      image: thorstenhans/kubernetes-workshop:0.0,2
+      imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 80
