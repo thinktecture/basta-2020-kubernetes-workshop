@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapi
+    city: Mainz
+    environment: development
+  name: webapi-deployment
+  namespace: basta-2020-deployments
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: webapi
+      environment: development
+      kind: backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapi
+        city: Mainz
+        environment: development
+        kind: backend
+    spec:
+      containers:
+        - image: thorstenhans/kubernetes-workshop:0.0.2
+          name: api
+          resources: {}
